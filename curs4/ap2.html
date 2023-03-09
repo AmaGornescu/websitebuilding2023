@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Get Data</button>
+    <p id="p"></p>
+
+    <div id="loader" class="lds-dual-ring hidden overlay"></div>
+    <script>
+        console.clear();
+        // https://jsonplaceholder.typicode.com/guide/
+        // https://jsonplaceholder.typicode.com/users
+        // fake api data 'https://jsonplaceholder.typicode.com/posts/'
+        // const btn = document.getElementById('btn');
+        // const p = document.getElementById('p');
+
+        btn.addEventListener('click', getData);
+        function getData() {
+            document.getElementById('loader').classList.remove('hidden');
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://forbes400.onrender.com/api/forbes400?limit=100', true);
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    const data = JSON.parse(this.responseText)
+                    console.table(data);
+                    data.forEach(item => {
+                        // console.table(item);
+                         p.innerHTML += `
+   <ul>
+   <li>Name: ${item.name}</li>
+   <li>Industria: ${item.uri}</li>
+   <li>Firma: ${item.firma}</li>
+   <li>Final Worth: ${item.finalWorth}</li>
+   </ul>
+   `
+                    })
+                    document.getElementById('loader').classList.add('hidden');
+                    document.getElementById("richList").innerHTML = richList;
+
+                }
+            }
+            xhr.onerror = function () {
+                const error = `404: Not Found`
+                console.log(error);
+                p.innerHTML = error;
+            }
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
