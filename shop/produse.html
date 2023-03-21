@@ -14,7 +14,8 @@
     <div class="p-5 bg-warning">
         <h1>Demo Header</h1>
     </div>
-    <nav id="navbar_top" class="navbar  navbar-expand-lg navbar-dark bg-primary">
+    <section w3-include-html="navbar.html"></section>
+    <!-- <nav id="navbar_top" class="navbar  navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
                 <img src="./assets/img/logo.svg" height="28" alt="Logo">
@@ -36,7 +37,7 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav> -->
     <!-- STOP Section Navbar -->
    <section class="section">
     <div class="container">
@@ -61,6 +62,10 @@
         </div>
     </div>
 </section>
+<!-- START FOOTER -->
+<section w3-include-html="footer.html"></section>
+<!-- STOP FOOTER -->
+
 <div id="loader" class="lds-dual-ring hidden overlay"></div>
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -69,6 +74,13 @@
 <script src="./assets/js/main-min.js"></script>
  
  <script src="./assets/js/produse.js"></script>
+ <script src="./dev/js/include.js"></script>
+
+ <script>
+    $(document).ready(function (){
+    $('#produse').addClass('active');
+    });
+ </script>
 
 
 </body>
